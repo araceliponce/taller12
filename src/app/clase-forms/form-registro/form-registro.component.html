@@ -1,0 +1,119 @@
+<section class="container d-none">
+
+  <!-- formGroup entre parentesis -->
+  <form (formGroup)="unRegistroForm">
+    455
+    <section class="form-group">
+      <label for="dni">Dni:</label>
+      <!-- <input type="number" formControlName="dni" maxlength="8" min="000000000" max="999999999"> -->
+      <input id="dni" type="text" formControlName="dni" class="form-control">
+      <!-- validaciones de dni -->
+      <section *ngIf="dni?.invalid && (dni?.dirty || dni?.touched)">
+        <section *ngIf="dni?.errors?.['required']" class="alert alert-success">
+          El DNI es obligatorio
+        </section>
+        <section *ngIf="dni?.errors?.['pattern']" class="alert alert-success">
+          El DNI debe ser solo 8 digitos
+        </section>
+      </section>
+      <!-- fin de v -->
+    </section>
+
+    <section class="form-group">
+      <label for="nombres">nombres:</label>
+      <input id="nombres" type="text" formControlName="nombres" class="form-control">
+      <!-- validaciones de nombres -->
+      <section *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)">
+        <section *ngIf="nombres?.errors?.['required']" class="alert alert-success">
+          El nombres es obligatorio
+        </section>
+      </section>
+      <!-- fin de v -->
+    </section>
+  </form>
+</section>
+
+
+<h1 class="text-center">FORMULARIO DE REGISTRO</h1>
+<h2 class="text-center">Formulario reactivo</h2>
+
+<section class="container-sm">
+  <form [formGroup]="unRegistroForm" class="form-principal">
+    <section class="form-group m-3">
+      <label for="dni">Dni:</label>
+      <input type="text" formControlName="dni" maxlength="8" class="form-control" [ngStyle]="{'border-color': dni?.invalid && (dni?.dirty || dni?.touched)?'red':'gray'}"> <!-- aqui  ngstyle -->
+      <section *ngIf="dni?.invalid && (dni?.dirty || dni?.touched)">
+        <section *ngIf="dni?.errors?.['required']" class="alert alert-success">
+          El DNI es obligatorio
+        </section>
+        <section *ngIf="dni?.errors?.['pattern']" class="alert alert-success">
+          El DNI debe ser solo 8 digitos
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="nombres">Nombre completo:</label>
+      <input type="text" class="form-control" formControlName="nombres">
+      <section *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)">
+        <section *ngIf="nombres?.errors?.['required']" class="alert alert-success">
+          El nombre es obligatorio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="apellidos">Apellidos</label>
+      <input type="text" class="form-control" formControlName="apellidos">
+      <section *ngIf="apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)">
+        <section *ngIf="apellidos?.errors?.['required']" class="alert alert-success">
+          El Apellido es obligatorio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="fechanac">Fecha de Nacimiento</label>
+      <input type="date" class="form-control" formControlName="fechanac">
+      <section *ngIf="fechanac?.invalid && (fechanac?.dirty || fechanac?.touched)">
+        <section *ngIf="fechanac?.errors?.['required']" class="alert alert-success">
+          La fecha de nacimiento es obligatoria
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="sueldo">Sueldo</label>
+      <input type="number" class="form-control" formControlName="sueldo">
+      <section *ngIf="sueldo?.invalid && (sueldo?.dirty || sueldo?.touched)">
+        <section *ngIf="sueldo?.errors?.['required']" class="alert alert-success">
+          El sueldo es obligatorio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="comision">Comision</label>
+      <input type="number" class="form-control" formControlName="comision" step="0.1"> <!-- usa step para subir de 0.1 en 0.1 -->
+      <section *ngIf="comision?.invalid && (comision?.dirty || comision?.touched)">
+        <section *ngIf="comision?.errors?.['required']" class="alert alert-success">
+          La comisión es obligatoria
+        </section>
+        <section *ngIf="comision?.errors?.['min'] || comision?.errors?.['max']" class="alert alert-success">
+          La comisión no es valida
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <input type="submit" value="Enviar" class="btn btn-primary" [disabled]="!unRegistroForm.valid">
+      <input type="button" value="Refrescar" class="btn btn-success" (click)="Refrescar()">
+      <section *ngIf="exitoso==true">
+        registro exitoso
+      </section>
+    </section>
+
+
+
+  </form>
+</section>

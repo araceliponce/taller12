@@ -1,0 +1,79 @@
+<p>ACT. ASÍNCRONA: Un formulario, si es posible con labels posicionados para parecer placeholders</p>
+<p>Campos: nombre, email, teléfono, asunto,mensaje. Y btn de enviar sin habilitar hasta que los datos esten llenos y listos para ser enviados al servidor por medio del método onSubmit()</p>
+<p>Cuando el formulario es enviado, la aplicación mostrará un mensaje de “Gracias por comunicarnos con nosotros”, este mensaje se mostrará en la parte superior del formulario.</p>
+<p>Telefono y mensaje no son obigatorios</p>
+<p>Un campo required dejado vacío debe cambiar a letras y borde rojos</p>
+
+
+<section class="d-none">
+  <p>npm install @ngneat/error-tailor</p>
+
+  <p>ng add @ngx-formly/schematics --ui-theme=bootstrap</p>
+  <p>npm uninstall @schematics/angular .... npm install @schematics/angular@9.1.0</p>
+
+  <p>npm install ngx-valdemort</p>
+  <p>npm install @ngspot/ngx-errors
+  </p>
+  <p>instalar, importar en app.module</p>
+</section>
+
+
+<h1 class="text-center">FORMULARIO DE REGISTRO</h1>
+
+<section class="container-sm">
+  <form (formGroup)="otroRegistroForm">
+    <span>Gracias por comunicarte con nosotros</span>
+    <section class="form-group m-3">
+      <label for="aNombre">Nombre: </label>
+      <input type="text" id="aNombre" formControlName="aNombre" class="form-control" required>
+
+
+    </section>
+
+    <section class="form-group m-3">
+      <label for="aEmail">Email</label>
+      <input type="email" id="aEmail" class="form-control" formControlName="aEmail">
+
+    </section>
+
+    <section class="form-group m-3">
+      <label for="aTelef">Teléfono</label>
+      <input type="text" id="aTelef" class="form-control" formControlName="aTelef">
+
+    </section>
+
+    <section class="form-group m-3">
+      <label for="aAsunto">Asunto</label>
+      <input type="text" id="aAsunto" class="form-control" formControlName="aAsunto">
+
+    </section>
+
+
+    <section class="form-group m-3">
+      <label for="aMensaje">Mensaje</label>
+      <textarea type="date" id="aMensaje" class="form-control" formControlName="aMensaje"></textarea>
+
+    </section>
+
+
+
+    <section class="form-group m-3">
+      <input type="submit" value="Enviar" class="btn btn-primary" [disabled]="!otroRegistroForm.valid">
+      <section *ngIf="exitoso==true">
+        registro exitoso
+      </section>
+    </section>
+
+
+
+
+    <!--    
+    <val-default-errors>
+      <ng-template valError="required" let-label>{{ label || 'This field' }} is required</ng-template>
+      <ng-template valError="email" let-label>{{ label || 'This field' }} must be a valid email address</ng-template>
+      <ng-template valError="min" let-error="error" let-label>
+        {{ label || 'This field' }} must be at least {{ error.min | number }}
+      </ng-template>
+    </val-default-errors> -->
+  </form>
+</section>
