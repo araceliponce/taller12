@@ -16,8 +16,11 @@ import { ClaseFormsModule } from './clase-forms/clase-forms.module';
     AppRoutingModule,
     ClaseFormsModule,
     AsincronaModule,
-    ValdemortModule,
-    NgxErrorsModule
+    ValdemortModule/* ,
+    NgxErrorsModule.configure({
+      showErrorsWhenInput:'touched',
+      showMaxErrors:1
+    }) */
   ],
   providers: [  
   ],

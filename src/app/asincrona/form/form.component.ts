@@ -1,25 +1,37 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ErrorsConfiguration, IErrorsConfiguration } from '@ngspot/ngx-errors';
+
+
+const myConfig: IErrorsConfiguration = {
+  // showErrorsWhenInput:'touched',
+};
+
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+  providers: [
+    /* { provide: ErrorsConfiguration, useValue: myConfig } */
+  ]
 })
+
 export class FormComponent {
 
-
+  /* ngOnInit(): void {
+    throw new Error('hi, Method not implemented.');
+  }  */
 
 
   constructor(private otroFormBuilder: FormBuilder){}
-
-
+ 
   otroRegistroForm = this.otroFormBuilder.group({
-    nombre: ['', { validators: [Validators.required, Validators.pattern('[a-zA-Z]')]   }],
+    nombre: ['', { validators: [Validators.required]}],
     email: ['',Validators.required],
     telefono: ['',Validators.pattern('[0-9]{9}')],
     asunto: ['',Validators.required],
-    mensaje: ['0.5',Validators.maxLength(777)]
+    mensaje: ['',Validators.maxLength(100)]
   
   })
 
@@ -35,10 +47,10 @@ export class FormComponent {
   //generar el metodo on submit para guardar los datos del formulario dentro un array
 
   datos = new Array;
-  exitoso = false;
+  mostrarmensaje = false;
 
   //al pulsar el boton de tipo submit que haya en el form
-  onsubmit(){
+  onSubmit(){
 
     // si es invalido (o si es !valid), return
     if(this.otroRegistroForm.invalid){
@@ -46,12 +58,12 @@ export class FormComponent {
       return;
     }
 
-    this.exitoso = true;
+    this.mostrarmensaje = true;
     this.datos.push(
       {
         'Nombre': this.otroRegistroForm.get('nombres')?.value,
         'Email': this.otroRegistroForm.get('email')?.value,
-        'Telefono': this.otroRegistroForm.get('telefono')?.value,
+        'Teléfono': this.otroRegistroForm.get('telefono')?.value,
         'Asunto': this.otroRegistroForm.get('asunto')?.value,
         'Mensaje': this.otroRegistroForm.get('mensaje')?.value,
       }
