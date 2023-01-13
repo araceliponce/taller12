@@ -3,11 +3,8 @@
 importamos ReactiveFormsModule en lugar de FormsModule
 
 
-## Para tener un live demo:
-```
-ng add angular-cli-ghpages
-```
-```
-ng deploy --base-href "/taller12/"
-```
+---
+
+<https://stackoverflow.com/questions/35269179/angular-conditional-class-with-ngclass>
+
 
