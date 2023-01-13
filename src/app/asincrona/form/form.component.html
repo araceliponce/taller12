@@ -1,9 +1,11 @@
-<p>ACT. ASÍNCRONA: Un formulario, si es posible con labels posicionados para parecer placeholders</p>
-<p>Campos: nombre, email, teléfono, asunto,mensaje. Y btn de enviar sin habilitar hasta que los datos esten llenos y listos para ser enviados al servidor por medio del método onSubmit()</p>
-<p>Cuando el formulario es enviado, la aplicación mostrará un mensaje de “Gracias por comunicarnos con nosotros”, este mensaje se mostrará en la parte superior del formulario.</p>
-<p>Teléfono y mensaje no son obigatorios</p>
-<p>Un campo required dejado vacío debe cambiar a letras y borde rojos</p>
-<p>Nota: El campo teléfono y mensaje, no son obligatorios, pero si empiezas a llenarlos <strong>teléfono requiere al menos 9 números</strong> y <strong>mensaje tiene un límite de 100 caracteres</strong> </p>
+<section class="container-sm">
+  <p>ACT. ASÍNCRONA: Un formulario, si es posible con labels posicionados para parecer placeholders</p>
+  <p>Campos: nombre, email, teléfono, asunto,mensaje. Y btn de enviar sin habilitar hasta que los datos esten llenos y listos para ser enviados al servidor por medio del método onSubmit()</p>
+  <p>Cuando el formulario es enviado, la aplicación mostrará un mensaje de “Gracias por comunicarnos con nosotros”, este mensaje se mostrará en la parte superior del formulario.</p>
+  <p>Teléfono y mensaje no son obigatorios</p>
+  <p>Un campo required dejado vacío debe cambiar a letras y borde rojos</p>
+  <p>Nota: El campo teléfono y mensaje, no son obligatorios, pero si empiezas a llenarlos <strong>teléfono requiere al menos 9 números</strong> y <strong>mensaje tiene un límite de 100 caracteres</strong> </p>
+</section>
 
 
 <section class="d-none">
@@ -88,3 +90,10 @@
         {{ label || 'This field' }} must be at least {{ error.min | number }}
       </ng-template>
     </val-default-errors> -->
+
+
+<style>
+  .container-sm {
+    max-width: 40rem !important;
+  }
+</style>
